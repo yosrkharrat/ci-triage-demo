@@ -32,6 +32,6 @@ class Cart:
         return sum((i.subtotal for i in self.items), Decimal(0))
 
     def total(self, discount: Decimal = Decimal(0)) -> Decimal:
-        """Subtotal, less `discount` (a fraction: 0.10 is 10% off), plus tax."""
-        discounted = self.subtotal * (1 - discount)
+        """Subtotal, less `discount` (a percentage: 10 is 10% off), plus tax."""
+        discounted = self.subtotal * (1 - discount / 100)
         return (discounted * (1 + self.tax_rate)).quantize(CENT, ROUND_HALF_UP)
