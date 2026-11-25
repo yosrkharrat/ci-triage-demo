@@ -20,7 +20,7 @@ class Item:
         return self.line_price()
 
     def line_price(self) -> Decimal:
-        return self.unit_price
+        return self.unit_price * self.quantity
 
 
 @dataclass
