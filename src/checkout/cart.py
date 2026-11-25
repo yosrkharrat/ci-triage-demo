@@ -35,3 +35,8 @@ class Cart:
         """Subtotal, less `discount` (a fraction: 0.10 is 10% off), plus tax."""
         discounted = self.subtotal * (1 - discount)
         return (discounted * (1 + self.tax_rate)).quantize(CENT, ROUND_HALF_UP)
+
+
+def receipt_line(item: Item) -> str:
+    """One receipt line: quantity, SKU and line subtotal."""
+    return f"{item.quantity} x {item.sku}: {item.subtotal:.2f}"
