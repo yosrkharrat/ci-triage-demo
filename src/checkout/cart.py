@@ -16,7 +16,11 @@ class Item:
 
     @property
     def subtotal(self) -> Decimal:
-        return self.unit_price * self.quantity
+        """The line's price before discount and tax."""
+        return self.line_price()
+
+    def line_price(self) -> Decimal:
+        return self.unit_price
 
 
 @dataclass
