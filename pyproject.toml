@@ -3,5 +3,8 @@ name = "checkout"
 version = "0.1.0"
 requires-python = ">=3.12"
 
+[dependency-groups]
+dev = ["pytest", "syrupy"]
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
