@@ -24,3 +24,9 @@ def test_total_applies_a_discount_before_tax():
 
 def test_an_empty_cart_costs_nothing():
     assert Cart().total() == Decimal("0.00")
+
+
+def test_a_discount_never_rounds_in_the_shops_favour():
+    # 33.00 * 0.90 * 1.20 = 35.64 exactly; the shop wants every discounted
+    # total rounded down a cent so a customer never pays the rounding.
+    assert make_cart().total(discount=Decimal("0.10")) == Decimal("35.63")
