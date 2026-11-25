@@ -24,3 +24,16 @@ def test_total_applies_a_discount_before_tax():
 
 def test_an_empty_cart_costs_nothing():
     assert Cart().total() == Decimal("0.00")
+
+
+def test_a_book_pays_the_reduced_rate():
+    cart = Cart()
+    cart.add("book", "20.00", category="reduced")
+    assert cart.total() == Decimal("21.10")
+
+
+def test_each_line_pays_its_own_rate():
+    cart = Cart()
+    cart.add("mug", "12.50")
+    cart.add("book", "20.00", category="reduced")
+    assert cart.total() == Decimal("36.10")
