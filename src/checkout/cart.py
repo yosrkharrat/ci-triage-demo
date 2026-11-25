@@ -27,7 +27,7 @@ class Cart:
     items: list[Item] = field(default_factory=list)
 
     def add(self, sku: str, unit_price: str, quantity: int = 1, category: str = "standard") -> None:
-        self.items.append(Item(sku, Decimal(unit_price), quantity))
+        self.items.append(Item(sku, Decimal(unit_price), quantity, category))
 
     @property
     def subtotal(self) -> Decimal:
